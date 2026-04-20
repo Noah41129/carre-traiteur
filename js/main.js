@@ -68,6 +68,20 @@ const observer = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => observer.observe(el));
 
+// ─── YOUTUBE FACADE ──────────────────────────────────────────
+const ytFacade = document.getElementById('yt-facade');
+if (ytFacade) {
+  ytFacade.addEventListener('click', function() {
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/eV0kC8D2Ivs?autoplay=1';
+    iframe.title = 'Carré Traiteur — Vidéo';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
+    this.replaceWith(iframe);
+  });
+}
+
 // ─── GALLERY LIGHTBOX (simple) ────────────────────────────────
 const galleryItems = document.querySelectorAll('.gallery-item');
 

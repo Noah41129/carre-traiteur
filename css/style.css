@@ -58,7 +58,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: #7A5B2E;
   margin-bottom: 1.2rem;
 }
 .section-label.light { color: var(--gold-light); }
@@ -125,13 +125,13 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
   transition: all var(--transition);
 }
 .btn-gold {
-  background: var(--gold);
+  background: var(--gold-dark);
   color: var(--white);
-  border-color: var(--gold);
+  border-color: var(--gold-dark);
 }
 .btn-gold:hover {
-  background: var(--gold-dark);
-  border-color: var(--gold-dark);
+  background: #7A5B2E;
+  border-color: #7A5B2E;
   transform: translateY(-2px);
 }
 .btn-outline {
@@ -517,13 +517,51 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
   height: 0;
   border-top: 3px solid var(--gold);
   box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  background: #000;
 }
-.video-wrap iframe {
+.video-wrap iframe,
+.youtube-facade {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
   border: none;
+}
+.youtube-facade {
+  cursor: pointer;
+  overflow: hidden;
+}
+.youtube-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.youtube-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 48px;
+  background: rgba(255,0,0,0.9);
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+.youtube-play-btn::after {
+  content: '';
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 4px;
+}
+.youtube-facade:hover .youtube-play-btn {
+  background: rgba(204,0,0,0.95);
+  transform: translate(-50%, -50%) scale(1.08);
 }
 
 /* ─── CONTACT ─── */
@@ -542,7 +580,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
 }
 .contact-card:hover { transform: translateY(-4px); }
 .contact-icon { font-size: 1.8rem; margin-bottom: 1rem; }
-.contact-card h4 {
+.contact-card h3 {
   font-family: var(--font-serif);
   font-size: 1.1rem;
   margin-bottom: 0.8rem;
@@ -610,7 +648,8 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
   transition: color var(--transition);
 }
 .footer-nav a:hover { color: var(--gold-light); }
-.footer-legal { margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6; }
+.footer-legal { margin-top: 0.5rem; font-size: 0.8rem; }
+.footer-legal a { color: rgba(255,255,255,0.65); }
 .admin-btn {
   display: block;
   margin: 1rem auto 0;
@@ -624,7 +663,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
 
 .footer-copy {
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.55);
   letter-spacing: 0.05em;
 }
 
@@ -762,7 +801,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
 
   /* Contact */
   .contact-card { padding: 1.5rem 1rem; }
-  .contact-card h4 { font-size: 1rem; }
+  .contact-card h3 { font-size: 1rem; }
   .contact-card p { font-size: 0.82rem; }
   .contact-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
   .map-wrap { height: 240px; margin-top: 2rem; }
@@ -793,4 +832,66 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
   .gallery-item { height: 180px; }
   .prix-mosaic img { height: 100px; }
   .contact-card { padding: 1.2rem 0.8rem; }
+}
+
+/* ─── BANDEAU COOKIES ─── */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(28, 28, 30, 0.97);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(176, 141, 87, 0.3);
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+#cookie-banner p {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+  flex: 1;
+  min-width: 220px;
+}
+
+#cookie-banner a {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.cookie-btn:hover { opacity: 0.85; }
+
+.cookie-btn-accept {
+  background: #8B6A3A;
+  color: #fff;
+}
+
+.cookie-btn-refuse {
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.3);
 }
