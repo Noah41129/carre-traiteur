@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.pappers.fr)",
+      "WebFetch(domain:www.societe.com)",
+      "WebFetch(domain:annuaire-entreprises.data.gouv.fr)",
+      "WebFetch(domain:recherche-entreprises.api.gouv.fr)",
+      "Bash(npm install *)",
+      "Bash(npm --version)",
+      "Bash(winget --version)",
+      "Bash(winget install *)",
+      "Bash(export PATH=\"$PATH:/c/Program Files/nodejs\")",
+      "Bash(vercel login *)"
+    ]
+  }
+}
