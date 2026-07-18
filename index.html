@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carré Traiteur – Charcutier-Traiteur Artisanal à Orléans</title>
+  <meta name="description" content="Carré Traiteur, charcutier-traiteur artisanal depuis 1987 aux Halles Châtelet d'Orléans. Charcuterie maison, buffets, cocktails et prestations sur mesure.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
+  <link rel="apple-touch-icon" href="images/logo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap"></noscript>
+  <style>
+:root{--charcoal:#1C1C1E;--off-white:#F5F0E8;--cream:#EDE8DC;--white:#FFFFFF;--gold:#B08D57;--gold-light:#C9A96E;--gold-dark:#8B6A3A;--terracotta:#C0614A;--gray:#A3A3A5;--gray-light:#D9D9D9;--dark-bg:#111110;--font-serif:'Playfair Display',Georgia,serif;--font-sans:'Montserrat',sans-serif;--transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94);--radius:2px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+img{display:block;width:100%;height:auto;object-fit:cover}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+body{font-family:var(--font-sans);font-weight:300;color:var(--charcoal);background:var(--off-white);overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--font-serif);font-weight:400;line-height:1.2}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+.section{padding:7rem 0}
+.section-light{background:var(--off-white)}
+.btn{display:inline-block;padding:.85rem 2.2rem;font-family:var(--font-sans);font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;border:1px solid transparent;cursor:pointer;transition:all var(--transition)}
+.btn-gold{background:#8B6A3A;color:var(--white);border-color:#8B6A3A}
+.btn-gold:hover{background:#7A5B2E;border-color:#7A5B2E;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--white);border-color:rgba(255,255,255,.5)}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:var(--white)}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent;transition:background var(--transition),backdrop-filter var(--transition)}
+#navbar.scrolled{background:rgba(28,28,30,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(176,141,87,.2)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo .logo-img{height:42px;width:auto;border-radius:8px;transition:opacity var(--transition)}
+.nav-logo:hover .logo-img{opacity:.8}
+.nav-links{display:flex;align-items:center;gap:2.2rem}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);transition:color var(--transition)}
+.nav-links a:hover{color:var(--gold-light)}
+.nav-links .nav-cta{border:1px solid var(--gold);color:var(--gold-light);padding:.5rem 1.2rem}
+.nav-links .nav-cta:hover{background:var(--gold);color:var(--white)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.burger span{display:block;width:24px;height:1.5px;background:var(--white);transition:all .3s}
+#hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg-img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);animation:heroZoom 12s ease-out forwards}
+@keyframes heroZoom{from{transform:scale(1.1)}to{transform:scale(1.0)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,17,16,.55) 0%,rgba(17,17,16,.45) 60%,rgba(17,17,16,.75) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;color:var(--white);padding:0 1.5rem;animation:heroFadeUp 1.2s .3s both}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{font-size:.7rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.2rem}
+.hero-title{font-family:var(--font-serif);font-size:clamp(3.5rem,8vw,7rem);font-weight:400;letter-spacing:-.01em;line-height:1;margin-bottom:1.2rem}
+.hero-subtitle{font-family:var(--font-sans);font-weight:300;font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.82);line-height:1.7;margin-bottom:2rem}
+.hero-rating{display:flex;align-items:center;justify-content:center;gap:.8rem;margin-bottom:2.5rem}
+.stars{color:var(--gold);font-size:1.1rem;letter-spacing:3px}
+.rating-label{font-size:.75rem;font-weight:500;letter-spacing:.1em;color:rgba(255,255,255,.7)}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center}
+.scroll-line{display:block;width:1px;height:60px;background:linear-gradient(to bottom,rgba(255,255,255,0),var(--gold-light));animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.1)}}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.reveal-right{transform:translateX(40px)}
+.reveal.visible{opacity:1;transform:translate(0,0)}
+@media(max-width:680px){
+  .nav-links{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(28,28,30,.98);backdrop-filter:blur(12px);flex-direction:column;align-items:center;padding:1.5rem 0;gap:1.2rem;border-bottom:1px solid rgba(176,141,87,.2);z-index:999}
+  .nav-links.open{display:flex}
+  .burger{display:flex}
+  .nav-inner{height:60px}
+  .nav-logo .logo-img{height:32px}
+  .hero-title{font-size:2.6rem}
+  .hero-subtitle{font-size:.9rem}
+  .hero-eyebrow{font-size:.62rem}
+  .hero-actions{flex-direction:column;align-items:center;gap:.7rem}
+  .hero-actions .btn{width:100%;max-width:260px;text-align:center;padding:.7rem 1.5rem}
+  .scroll-hint{display:none}
+}
+@media(max-width:400px){.hero-title{font-size:2.1rem}}
+  </style>
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ NAVIGATION ═══ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <img src="images/logo.jpg" alt="Carré Traiteur" class="logo-img" width="88" height="42" />
+      </a>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#notre-histoire">Notre Histoire</a></li>
+        <li><a href="#savoir-faire">Savoir-Faire</a></li>
+        <li><a href="#prix-remporte">Prix</a></li>
+        <li><a href="#nos-prestations">Prestations</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img
+        src="images/hero.webp"
+        alt="Prestation traiteur et brasero en soirée — Carré Traiteur"
+        class="hero-bg-img"
+        fetchpriority="high"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Depuis 1987 · Orléans</p>
+      <h1 class="hero-title">Carré Traiteur</h1>
+      <p class="hero-subtitle">Charcuterie &amp; traiteur artisanal<br>La passion du goût, le respect du produit.</p>
+      <div class="hero-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-label">4.9 / 5 — Avis clients</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#savoir-faire" class="btn btn-gold">Découvrir notre savoir-faire</a>
+        <a href="#contact" class="btn btn-outline">Nous contacter</a>
+      </div>
+    </div>
+    <a href="#notre-histoire" class="scroll-hint" aria-label="Défiler vers le bas">
+      <span class="scroll-line"></span>
+    </a>
+  </section>
+
+  <!-- ═══════════════════════════════════════ NOTRE HISTOIRE ═══ -->
+  <section id="notre-histoire" class="section section-light">
+    <div class="container">
+      <div class="section-label">Notre Histoire</div>
+      <div class="histoire-grid">
+        <div class="histoire-text reveal">
+          <h2 class="section-title">Un savoir-faire<br><em>transmis de génération<br>en génération</em></h2>
+          <p class="body-text">Créé en <strong>1987</strong>, Carré Traiteur perpétue un savoir-faire familial transmis de <strong>Jacques et Yvelise Carré</strong> à <strong>Ludwig et Emmanuelle Carré</strong>.</p>
+          <p class="body-text">Situé au cœur des <strong>Halles Châtelet à Orléans</strong>, notre établissement propose depuis plus de 35 ans une cuisine artisanale, généreuse et authentique, où la qualité reste la priorité absolue.</p>
+          <div class="gold-divider"></div>
+          <p class="signature-text">Savoir-faire artisanal</p>
+        </div>
+        <div class="histoire-images reveal reveal-right">
+          <div class="img-stack">
+            <img
+              src="images/histoire-main.webp"
+              alt="Ludwig et Emmanuelle Carré dans la boutique"
+              class="img-main"
+              loading="lazy"
+            />
+            <img
+              src="images/histoire-accent.webp"
+              alt="Jacques et Yvelise Carré, fondateurs"
+              class="img-accent"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ SAVOIR-FAIRE ═══ -->
+  <section id="savoir-faire" class="section section-dark">
+    <div class="container">
+      <div class="section-label light">Savoir-Faire</div>
+      <h2 class="section-title light text-center reveal">L'art de la charcuterie<br><em>et du traiteur maison</em></h2>
+      <div class="savoir-grid">
+
+        <article class="savoir-card reveal">
+          <div class="savoir-img-wrap">
+            <img
+              src="images/savoir-charcuterie.webp"
+              alt="Charcuterie maison"
+              loading="lazy"
+            />
+          </div>
+          <div class="savoir-body">
+            <h3>Charcuterie Maison</h3>
+            <p>Terrines, pâtés, jambons et spécialités charcutières préparés chaque jour dans notre atelier, selon des recettes authentiques transmises de père en fils.</p>
+          </div>
+        </article>
+
+        <article class="savoir-card reveal">
+          <div class="savoir-img-wrap">
+            <img
+              src="images/savoir-plats.webp"
+              alt="Plats cuisinés et buffets"
+              loading="lazy"
+            />
+          </div>
+          <div class="savoir-body">
+            <h3>Plats Cuisinés &amp; Buffets</h3>
+            <p>Une cuisine faite maison, préparée chaque jour avec passion. Des plats généreux qui allient tradition et créativité pour ravir vos convives.</p>
+          </div>
+        </article>
+
+        <article class="savoir-card reveal">
+          <div class="savoir-img-wrap">
+            <img
+              src="images/savoir-traiteur.webp"
+              alt="Service traiteur et brasero"
+              loading="lazy"
+            />
+          </div>
+          <div class="savoir-body">
+            <h3>Service Traiteur &amp; Brasero</h3>
+            <p>Des prestations traiteur sur mesure avec possibilité de livraison de buffets directement sur le lieu de votre réception, partout en région.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ VIDEO ═══ -->
+  <section id="video" class="section section-light">
+    <div class="container">
+      <div class="video-layout">
+        <div class="video-text reveal">
+          <div class="section-label">En vidéo</div>
+          <h2 class="section-title">Plongez au cœur<br><em>de notre atelier</em></h2>
+          <p class="body-text">Depuis plus de 35 ans, Carré Traiteur perpétue un savoir-faire artisanal unique. Chaque produit est préparé à la main, avec passion et des ingrédients soigneusement sélectionnés.</p>
+          <p class="body-text">Venez découvrir les coulisses de notre cuisine, notre amour du produit, et la générosité qui fait la réputation de la maison depuis 1987.</p>
+          <div class="gold-divider"></div>
+          <p class="signature-text">La passion du goût</p>
+        </div>
+        <div class="video-wrap reveal">
+          <div class="youtube-facade" id="yt-facade">
+            <img
+              src="https://i.ytimg.com/vi/eV0kC8D2Ivs/hqdefault.jpg"
+              alt="Carré Traiteur — Vidéo"
+              loading="lazy"
+              width="480"
+              height="360"
+            />
+            <button class="youtube-play-btn" aria-label="Lire la vidéo Carré Traiteur"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ PRIX REMPORTES ═══ -->
+  <section id="prix-remporte" class="section section-cream">
+    <div class="container">
+      <div class="section-label">Récompenses</div>
+      <div class="prix-grid">
+        <div class="prix-text reveal">
+          <h2 class="section-title">Une excellence<br><em>reconnue & primée</em></h2>
+          <p class="body-text">Nos produits sont régulièrement primés dans les grands concours nationaux et régionaux, témoignant de notre engagement constant envers la qualité artisanale.</p>
+          <ul class="prix-list">
+            <li><span class="prix-icon">🏆</span>Grand Prix de Paris du charcutier-traiteur</li>
+            <li><span class="prix-icon">🥇</span>Grand Prix national – Palme d'or du fromage de tête (2017)</li>
+            <li><span class="prix-icon">🥇</span>Médaille d'or du Goûte-Andouille – Jargeau (2017)</li>
+            <li><span class="prix-icon">🥇</span>Médaille d'or du Boudin blanc Saint-Jacques &amp; petits légumes</li>
+            <li><span class="prix-icon">🏅</span>1er Prix de la Terrine de magret de canard – Flers (2016 &amp; 2017)</li>
+            <li><span class="prix-icon">🏅</span>Prix d'honneur de "La Petite Dernière" – Romorantin (2017)</li>
+          </ul>
+        </div>
+        <div class="prix-mosaic reveal reveal-right">
+          <img src="images/prix-1.webp" alt="Grande coupe remportée" loading="lazy" />
+          <img src="images/prix-2.webp" alt="Coupe et médaille" loading="lazy" />
+          <img src="images/prix-3.webp" alt="Coupe et diplôme du Goûte-Andouille" loading="lazy" />
+          <img src="images/prix-4.webp" alt="Diplôme Médaille d'or du Boudin blanc" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ PRESTATIONS ═══ -->
+  <section id="nos-prestations" class="section section-light">
+    <div class="container">
+      <div class="section-label">Prestations</div>
+      <h2 class="section-title text-center reveal">Nous réalisons toutes<br><em>vos envies gourmandes</em></h2>
+      <p class="section-intro reveal">Du repas familial au grand événement, nous vous accompagnons avec le même soin et la même exigence.</p>
+
+      <div class="prestation-blocks">
+
+        <div class="prestation-block reveal">
+          <div class="prestation-img">
+            <img src="images/presta-cocktail.webp" alt="Cocktails et buffets" loading="lazy" />
+          </div>
+          <div class="prestation-content">
+            <span class="prestation-tag">Sur mesure</span>
+            <h3>Cocktails &amp; Buffets</h3>
+            <p>Nous proposons des cocktails et buffets sur mesure, préparés avec des produits frais et faits maison. Pour toute commande ou devis, rendez-vous directement en boutique aux Halles Châtelet.</p>
+          </div>
+        </div>
+
+        <div class="prestation-block reverse reveal">
+          <div class="prestation-img">
+            <img src="images/presta-brasero.webp" alt="Prestation brasero" loading="lazy" />
+          </div>
+          <div class="prestation-content">
+            <span class="prestation-tag">Événementiel</span>
+            <h3>Prestation Brasero</h3>
+            <p>Découvrez notre prestation brasero, idéale pour vos repas conviviaux. Elle s'adapte selon le nombre de personnes et votre budget. Nous participons à de nombreux événements régionaux : la Fête de la Sange, le Festival de Loire et bien d'autres encore.</p>
+          </div>
+        </div>
+
+        <div class="prestation-block reveal">
+          <div class="prestation-img">
+            <img src="images/presta-foires.webp" alt="Foires et salons" loading="lazy" />
+          </div>
+          <div class="prestation-content">
+            <span class="prestation-tag">Régional</span>
+            <h3>Foires &amp; Salons</h3>
+            <p>Retrouvez-nous lors des grandes foires et salons de la région. Carré Traiteur est présent tout au long de l'année pour vous faire découvrir le meilleur de la charcuterie artisanale.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ GALERIE ═══ -->
+  <section id="galerie" class="section section-charcoal">
+    <div class="container">
+      <div class="section-label light">Galerie</div>
+      <h2 class="section-title light text-center reveal">La passion &amp; la qualité<br><em>en images</em></h2>
+      <p class="section-intro light text-center reveal">Des plats faits maison, des buffets élégants et un savoir-faire artisanal reconnu à Orléans.</p>
+      <div class="gallery-grid reveal">
+        <img src="images/galerie-1.webp" alt="Gaspacho et sa garniture" class="gallery-item" loading="lazy" />
+        <img src="images/galerie-2.webp" alt="Buffet froid, plateaux de crevettes et saumon" class="gallery-item" loading="lazy" />
+        <img src="images/galerie-3.webp" alt="La boutique Carré Traiteur aux Halles Châtelet" class="gallery-item" loading="lazy" />
+        <img src="images/galerie-4.webp" alt="Tarte aux fraises maison" class="gallery-item" loading="lazy" />
+        <img src="images/galerie-5.webp" alt="Verrines apéritives" class="gallery-item" loading="lazy" />
+        <img src="images/galerie-6.webp" alt="Prestation brasero en soirée" class="gallery-item" loading="lazy" />
+      </div>
+      <div class="gallery-cta reveal">
+        <a href="https://www.facebook.com/carretraiteur" target="_blank" rel="noopener" class="btn btn-gold-outline">Voir plus sur Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ CONTACT ═══ -->
+  <section id="contact" class="section section-cream">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title text-center reveal">Venez nous<br><em>rendre visite</em></h2>
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <div class="contact-icon">📍</div>
+          <h3>Notre Boutique</h3>
+          <p>Halles Châtelet<br>41 place du Châtelet<br>45000 Orléans</p>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">📞</div>
+          <h3>Téléphone</h3>
+          <p><a href="tel:0238626881">02 38 62 68 81</a></p>
+        </div>
+        <div class="contact-card reveal">
+          <div class="contact-icon">✉️</div>
+          <h3>Email</h3>
+          <p><a href="mailto:manue.vende@wanadoo.fr">manue.vende@wanadoo.fr</a></p>
+        </div>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe
+          title="Carré Traiteur — Halles Châtelet Orléans"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.7!2d1.9034!3d47.9027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e9c6ce3fba51%3A0x5b52a5b8c4a3a81e!2sHalles+Ch%C3%A2telet%2C+Orl%C3%A9ans!5e0!3m2!1sfr!2sfr!4v1"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER ═══ -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <img src="images/logo.jpg" alt="Carré Traiteur" class="footer-logo" width="88" height="40" />
+      <p class="footer-tagline"><em>Savoir-faire artisanal depuis 1987</em></p>
+      <nav class="footer-nav">
+        <a href="#notre-histoire">Histoire</a>
+        <a href="#savoir-faire">Savoir-faire</a>
+        <a href="#nos-prestations">Prestations</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <nav class="footer-nav footer-legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </nav>
+      <p class="footer-copy">© 2025 Carré Traiteur — Tous droits réservés.</p>
+      <a href="https://vercel.com/3dpmfrance-3058s-projects/carre-traiteur/analytics" target="_blank" rel="noopener" class="admin-btn" title="Statistiques">⬡</a>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════ BANDEAU COOKIES ═══ -->
+  <div id="cookie-banner" style="display:none;">
+    <p>
+      Ce site utilise des cookies techniques nécessaires à son bon fonctionnement.
+      En continuant votre navigation, vous acceptez leur utilisation.
+      <a href="politique-confidentialite.html">En savoir plus</a>
+    </p>
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-btn-refuse" onclick="cookieChoice(false)">Refuser</button>
+      <button class="cookie-btn cookie-btn-accept" onclick="cookieChoice(true)">Accepter</button>
+    </div>
+  </div>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    (function() {
+      if (!localStorage.getItem('cookie-consent')) {
+        document.getElementById('cookie-banner').style.display = 'flex';
+      }
+    })();
+    function cookieChoice(accepted) {
+      localStorage.setItem('cookie-consent', accepted ? 'accepted' : 'refused');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

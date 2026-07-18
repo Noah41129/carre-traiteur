@@ -1,0 +1,5 @@
+# Fichiers sources lourds — non nécessaires en production (les photos utilisées sont dans images/)
+CARRE TRAITEUR/
+site.pdf.pdf
+{css,js,images,assets}/
+.DS_Store
