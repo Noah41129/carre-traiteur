@@ -122,3 +122,68 @@ galleryItems.forEach(img => {
     document.body.appendChild(overlay);
   });
 });
+
+// ─── DÉFILEMENT AUTOMATIQUE ──────────────────────────────────
+const autoScrollBtn = document.getElementById('autoscroll-btn');
+if (autoScrollBtn) {
+  const SCROLL_SPEED = 230; // vitesse en pixels par seconde (ajustable)
+  let scrolling = false;
+  let rafId = null;
+  let lastTs = null;
+  let targetY = 0;          // position flottante accumulée (évite la perte de sous-pixels)
+
+  const maxScroll = () =>
+    (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+
+  function step(ts) {
+    if (!scrolling) return;
+    if (lastTs === null) { lastTs = ts; targetY = window.scrollY; }
+    const dt = Math.min((ts - lastTs) / 1000, 0.1); // borne le delta (onglet en arrière-plan…)
+    lastTs = ts;
+    targetY += SCROLL_SPEED * dt;
+    const max = maxScroll();
+    if (targetY >= max) { window.scrollTo(0, max); stop(); return; } // arrivé en bas
+    window.scrollTo(0, targetY);
+    rafId = requestAnimationFrame(step);
+  }
+
+  function start() {
+    if (window.scrollY >= maxScroll() - 1) return; // déjà tout en bas
+    scrolling = true;
+    lastTs = null;
+    // Désactive le "scroll-behavior: smooth" du CSS qui perturbe notre animation
+    document.documentElement.style.scrollBehavior = 'auto';
+    autoScrollBtn.classList.add('scrolling');
+    autoScrollBtn.setAttribute('aria-label', 'Arrêter le défilement');
+    addInterrupts();
+    rafId = requestAnimationFrame(step);
+  }
+
+  function stop() {
+    scrolling = false;
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+    document.documentElement.style.scrollBehavior = ''; // restaure le comportement CSS
+    autoScrollBtn.classList.remove('scrolling');
+    autoScrollBtn.setAttribute('aria-label', 'Défilement automatique vers le bas');
+    removeInterrupts();
+  }
+
+  // S'arrête dès que l'utilisateur interagit (molette, tactile, clavier)
+  const onInterrupt = () => { if (scrolling) stop(); };
+  const onKey = (e) => {
+    if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' ','Spacebar','Escape'].includes(e.key)) onInterrupt();
+  };
+  function addInterrupts() {
+    window.addEventListener('wheel', onInterrupt, { passive: true });
+    window.addEventListener('touchstart', onInterrupt, { passive: true });
+    window.addEventListener('keydown', onKey);
+  }
+  function removeInterrupts() {
+    window.removeEventListener('wheel', onInterrupt);
+    window.removeEventListener('touchstart', onInterrupt);
+    window.removeEventListener('keydown', onKey);
+  }
+
+  autoScrollBtn.addEventListener('click', () => (scrolling ? stop() : start()));
+}

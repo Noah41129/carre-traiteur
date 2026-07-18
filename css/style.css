@@ -895,3 +895,50 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
   color: rgba(255,255,255,0.7);
   border: 1px solid rgba(255,255,255,0.3);
 }
+
+/* ─── BOUTON DÉFILEMENT AUTOMATIQUE ─── */
+.autoscroll-btn {
+  position: fixed;
+  right: 1.6rem;
+  bottom: 1.6rem;
+  z-index: 900;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #8B6A3A;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.25);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.autoscroll-btn:hover {
+  background: #7A5B2E;
+  transform: translateY(-2px);
+}
+.autoscroll-btn:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+.autoscroll-btn svg { width: 24px; height: 24px; display: block; }
+.autoscroll-btn .icon-stop { display: none; }
+.autoscroll-btn.scrolling { background: var(--terracotta); animation: autoscrollPulse 1.6s ease-in-out infinite; }
+.autoscroll-btn.scrolling .icon-play { display: none; }
+.autoscroll-btn.scrolling .icon-stop { display: block; }
+@keyframes autoscrollPulse {
+  0%, 100% { box-shadow: 0 6px 20px rgba(192, 97, 74, 0.4); }
+  50%      { box-shadow: 0 6px 30px rgba(192, 97, 74, 0.85); }
+}
+/* Décale le bouton au-dessus du bandeau cookies quand il est affiché */
+body.cookie-visible .autoscroll-btn { bottom: 6.5rem; }
+@media (max-width: 680px) {
+  .autoscroll-btn { width: 46px; height: 46px; right: 1.1rem; bottom: 1.1rem; }
+  .autoscroll-btn svg { width: 21px; height: 21px; }
+  body.cookie-visible .autoscroll-btn { bottom: 9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .autoscroll-btn.scrolling { animation: none; }
+}

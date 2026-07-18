@@ -404,6 +404,16 @@ h1,h2,h3,h4{font-family:var(--font-serif);font-weight:400;line-height:1.2}
     </div>
   </footer>
 
+  <!-- ═══════════════════════════════════════ DÉFILEMENT AUTO ═══ -->
+  <button id="autoscroll-btn" class="autoscroll-btn" aria-label="Défilement automatique vers le bas" title="Défilement automatique">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M5 6l7 7 7-7"/><path d="M5 13l7 7 7-7"/>
+    </svg>
+    <svg class="icon-stop" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <rect x="6.5" y="5.5" width="4" height="13" rx="1"/><rect x="13.5" y="5.5" width="4" height="13" rx="1"/>
+    </svg>
+  </button>
+
   <!-- ═══════════════════════════════════════ BANDEAU COOKIES ═══ -->
   <div id="cookie-banner" style="display:none;">
     <p>
@@ -424,11 +434,13 @@ h1,h2,h3,h4{font-family:var(--font-serif);font-weight:400;line-height:1.2}
     (function() {
       if (!localStorage.getItem('cookie-consent')) {
         document.getElementById('cookie-banner').style.display = 'flex';
+        document.body.classList.add('cookie-visible');
       }
     })();
     function cookieChoice(accepted) {
       localStorage.setItem('cookie-consent', accepted ? 'accepted' : 'refused');
       document.getElementById('cookie-banner').style.display = 'none';
+      document.body.classList.remove('cookie-visible');
     }
   </script>
 </body>
