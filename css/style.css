@@ -486,6 +486,16 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 
   color: #5A5755;
   font-weight: 300;
 }
+.prestation-content p.presta-events {
+  margin-top: 1.1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--charcoal);
+}
+@media (max-width: 680px) {
+  .prestation-content p.presta-events { font-size: 1.1rem; }
+}
 
 /* ─── GALERIE ─── */
 .gallery-grid {
