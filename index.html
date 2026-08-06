@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carré Traiteur – Charcutier-Traiteur Artisanal à Orléans</title>
   <meta name="description" content="Carré Traiteur, charcutier-traiteur artisanal depuis 1987 aux Halles Châtelet d'Orléans. Charcuterie maison, buffets, cocktails et prestations sur mesure.">
+  <link rel="canonical" href="https://carre-traiteur.fr/" />
+
+  <!-- Open Graph — aperçu lors d'un partage (Facebook, WhatsApp, SMS…) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Carré Traiteur" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:url" content="https://carre-traiteur.fr/" />
+  <meta property="og:title" content="Carré Traiteur – Charcutier-Traiteur Artisanal à Orléans" />
+  <meta property="og:description" content="Charcuterie maison, buffets, cocktails et prestations brasero sur mesure. Savoir-faire artisanal depuis 1987 aux Halles Châtelet d'Orléans." />
+  <meta property="og:image" content="https://carre-traiteur.fr/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Prestation traiteur et brasero en soirée — Carré Traiteur" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Carré Traiteur – Charcutier-Traiteur Artisanal à Orléans" />
+  <meta name="twitter:description" content="Charcuterie maison, buffets, cocktails et prestations brasero. Savoir-faire artisanal depuis 1987 à Orléans." />
+  <meta name="twitter:image" content="https://carre-traiteur.fr/images/og-image.jpg" />
+
   <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
   <link rel="apple-touch-icon" href="images/logo.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +97,45 @@ h1,h2,h3,h4{font-family:var(--font-serif);font-weight:400;line-height:1.2}
   </style>
   <link rel="preload" href="css/style.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="css/style.css?v=3"></noscript>
+
+  <!-- Données structurées pour Google (SEO local) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "@id": "https://carre-traiteur.fr/#business",
+    "name": "Carré Traiteur",
+    "description": "Charcutier-traiteur artisanal depuis 1987 aux Halles Châtelet d'Orléans. Charcuterie maison, buffets, cocktails et prestations brasero sur mesure.",
+    "url": "https://carre-traiteur.fr/",
+    "telephone": "+33238626881",
+    "email": "manue.vende@wanadoo.fr",
+    "image": "https://carre-traiteur.fr/images/og-image.jpg",
+    "logo": "https://carre-traiteur.fr/images/logo.jpg",
+    "priceRange": "€€",
+    "servesCuisine": "Française",
+    "foundingDate": "1987",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Halles Châtelet, 41 place du Châtelet",
+      "addressLocality": "Orléans",
+      "postalCode": "45000",
+      "addressRegion": "Centre-Val de Loire",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 47.9027,
+      "longitude": 1.9034
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Orléans et Centre-Val de Loire"
+    },
+    "sameAs": [
+      "https://www.facebook.com/carretraiteur"
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -400,7 +459,7 @@ h1,h2,h3,h4{font-family:var(--font-serif);font-weight:400;line-height:1.2}
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="politique-confidentialite.html">Politique de confidentialité</a>
       </nav>
-      <p class="footer-copy">© 2025 Carré Traiteur — Tous droits réservés.</p>
+      <p class="footer-copy">© <span id="year">2026</span> Carré Traiteur — Tous droits réservés.</p>
       <a href="https://vercel.com/3dpmfrance-3058s-projects/carre-traiteur/analytics" target="_blank" rel="noopener" class="admin-btn" title="Statistiques">⬡</a>
     </div>
   </footer>
@@ -433,6 +492,8 @@ h1,h2,h3,h4{font-family:var(--font-serif);font-weight:400;line-height:1.2}
   <script src="js/main.js?v=2"></script>
   <script>
     (function() {
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
       if (!localStorage.getItem('cookie-consent')) {
         document.getElementById('cookie-banner').style.display = 'flex';
         document.body.classList.add('cookie-visible');
