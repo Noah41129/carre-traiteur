@@ -98,6 +98,26 @@ h1,h2,h3,h4{font-family:var(--font-serif);font-weight:400;line-height:1.2}
   <link rel="preload" href="css/style.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="css/style.css?v=3"></noscript>
 
+  <!-- Thème Halloween : s'éteint tout seul le 3 novembre 2026 à 0h.
+       ?halloween=1 pour le forcer (aperçu), ?halloween=0 pour voir le site normal. -->
+  <script>
+    (function () {
+      var FIN = new Date(2026, 10, 3);
+      var p = new URLSearchParams(location.search).get('halloween');
+      if (p === '0' || (p !== '1' && new Date() >= FIN)) return;
+      document.documentElement.classList.add('halloween');
+      ['https://fonts.googleapis.com/css2?family=Creepster&display=swap', 'css/halloween.css?v=1'].forEach(function (href) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = href;
+        document.head.appendChild(l);
+      });
+      var s = document.createElement('script');
+      s.src = 'js/halloween.js?v=1';
+      document.head.appendChild(s);
+    })();
+  </script>
+
   <!-- Données structurées pour Google (SEO local) -->
   <script type="application/ld+json">
   {
