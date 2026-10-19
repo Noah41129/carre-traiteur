@@ -1,0 +1,295 @@
+/* ═══════════════════════════════════════════════════════════
+   CARRÉ TRAITEUR — Thème Noël
+   Chargé uniquement quand <html> porte la classe .noel
+   (voir le script en tête de index.html : dates + ?noel=1/0)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── PALETTE : vert sapin, or et bordeaux ─── */
+html.noel {
+  --charcoal:    #13201A;
+  --off-white:   #F8F3EA;
+  --cream:       #F0E7D6;
+  --gold:        #94701F;
+  --gold-light:  #E2C27A;
+  --gold-dark:   #7A5A14;
+  --terracotta:  #8E1B2A;
+  --dark-bg:     #0C1612;
+  --nl-red:      #8E1B2A;
+  --nl-red-dark: #741522;
+  --nl-green:    #1F4A36;
+}
+
+/* Couleurs codées en dur dans style.css / le CSS critique */
+.noel .btn-gold { background: var(--nl-red); border-color: var(--nl-red); }
+.noel .btn-gold:hover { background: var(--nl-red-dark); border-color: var(--nl-red-dark); }
+.noel .section-label { color: var(--nl-red); }
+.noel .section-label.light { color: var(--gold-light); }
+.noel #navbar.scrolled { background: rgba(19, 32, 26, 0.97); border-bottom-color: rgba(226, 194, 122, 0.25); }
+.noel .savoir-card { border-color: rgba(226, 194, 122, 0.18); }
+.noel .savoir-card:hover { border-color: rgba(226, 194, 122, 0.55); box-shadow: 0 0 34px rgba(226, 194, 122, 0.16); }
+.noel .prix-list li { border-bottom-color: rgba(148, 112, 31, 0.22); }
+.noel #footer { border-top-color: var(--charcoal); }
+.noel .stars { color: var(--gold-light); }
+.noel .autoscroll-btn,
+.noel .cookie-btn-accept { background: var(--nl-red); }
+.noel .autoscroll-btn:hover { background: var(--nl-red-dark); }
+.noel #cookie-banner { background: rgba(19, 32, 26, 0.97); border-top-color: rgba(226, 194, 122, 0.35); }
+@media (max-width: 680px) {
+  .noel .nav-links { background: rgba(19, 32, 26, 0.98); border-bottom-color: rgba(226, 194, 122, 0.25); }
+}
+
+/* Lueur dorée au survol */
+.noel .gallery-item:hover { opacity: 1; box-shadow: 0 0 0 1px rgba(226, 194, 122, 0.7), 0 0 28px rgba(226, 194, 122, 0.35); }
+.noel .prestation-block:hover .prestation-img { box-shadow: 0 0 34px rgba(148, 112, 31, 0.25); }
+.noel .contact-card:hover { box-shadow: 0 10px 34px rgba(148, 112, 31, 0.16); }
+
+/* ─── HERO : nuit d'hiver, lueur chaude du brasero ─── */
+.noel .hero-overlay {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 110%, rgba(232, 168, 84, 0.32), transparent 70%),
+    linear-gradient(to bottom, rgba(10, 22, 34, 0.72) 0%, rgba(14, 24, 30, 0.48) 55%, rgba(8, 14, 12, 0.88) 100%);
+}
+.noel .hero-title { text-shadow: 0 0 30px rgba(226, 194, 122, 0.3); }
+
+.nl-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.nl-ribbon .txt {
+  background: linear-gradient(100deg, #C9A24D 0%, #F6E3A8 25%, #C9A24D 50%, #F6E3A8 75%, #C9A24D 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  padding: 0 0.05em;
+  filter: drop-shadow(0 0 14px rgba(226, 194, 122, 0.45));
+  animation: nlShimmer 5s linear infinite;
+}
+.nl-ribbon svg { width: 0.5em; height: 0.5em; color: var(--gold-light); filter: drop-shadow(0 0 6px rgba(226, 194, 122, 0.8)); }
+@keyframes nlShimmer { from { background-position: 0% 0; } to { background-position: -200% 0; } }
+
+.nl-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; --fall: 108vh; }
+
+/* Guirlande lumineuse sous la navigation */
+.nl-garland { position: absolute; left: 0; right: 0; top: 72px; height: 56px; }
+.nl-garland svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.nl-garland path { fill: none; stroke: rgba(20, 16, 12, 0.85); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.nl-bulb {
+  position: absolute;
+  width: 9px;
+  height: 13px;
+  margin: -1px 0 0 -4.5px;
+  border-radius: 50% 50% 45% 45%;
+  background: var(--c);
+  box-shadow: 0 0 8px 2px var(--g), 0 0 22px 4px var(--g);
+  animation: nlTwinkle 2.4s ease-in-out var(--del, 0s) infinite alternate;
+}
+.nl-bulb::before { content: ''; position: absolute; left: 2.5px; top: -4px; width: 4px; height: 5px; border-radius: 1px; background: #2B241B; }
+.nl-bulb.c0 { --c: #FFF1C9; --g: rgba(255, 226, 150, 0.75); }
+.nl-bulb.c1 { --c: #F4C35A; --g: rgba(244, 195, 90, 0.75); }
+.nl-bulb.c2 { --c: #E0534A; --g: rgba(224, 83, 74, 0.6); }
+@keyframes nlTwinkle { 0% { opacity: 0.55; } 60% { opacity: 1; } 100% { opacity: 0.85; } }
+
+/* Ciel étoilé */
+.nl-star { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #FFF6DC;
+  box-shadow: 0 0 6px 1px rgba(255, 246, 220, 0.7); animation: nlTwinkle 3.2s ease-in-out var(--del, 0s) infinite alternate; }
+.nl-sparkle { position: absolute; color: var(--gold-light); filter: drop-shadow(0 0 8px rgba(226, 194, 122, 0.9));
+  animation: nlSparkle 4s ease-in-out var(--del, 0s) infinite; }
+.nl-sparkle svg { display: block; width: 100%; height: 100%; }
+@keyframes nlSparkle { 0%, 100% { transform: scale(0.55) rotate(0deg); opacity: 0.45; } 50% { transform: scale(1) rotate(45deg); opacity: 1; } }
+
+/* Neige */
+.nl-flake {
+  position: absolute;
+  top: -14px;
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: #fff;
+  opacity: var(--o);
+  filter: blur(var(--b));
+  animation: nlFall var(--d) linear var(--del) infinite;
+}
+@keyframes nlFall {
+  0%   { transform: translate3d(0, 0, 0); }
+  25%  { transform: translate3d(var(--sway), calc(var(--fall) * 0.25), 0); }
+  50%  { transform: translate3d(0, calc(var(--fall) * 0.5), 0); }
+  75%  { transform: translate3d(calc(var(--sway) * -1), calc(var(--fall) * 0.75), 0); }
+  100% { transform: translate3d(0, var(--fall), 0); }
+}
+
+/* Boules suspendues qui se balancent */
+.nl-bauble {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 0;
+  animation: nlSwing var(--sw, 3.4s) ease-in-out var(--del, 0s) infinite alternate;
+}
+.nl-string { width: 1px; height: var(--len, 120px); background: linear-gradient(rgba(226, 194, 122, 0.25), rgba(226, 194, 122, 0.85)); }
+.nl-cap { width: 12px; height: 9px; border-radius: 2px 2px 1px 1px; background: linear-gradient(#F3DFA8, #A8832F); }
+.nl-ball {
+  width: var(--size, 40px);
+  height: var(--size, 40px);
+  margin-top: -1px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 33% 30%, rgba(255, 255, 255, 0.85) 0 6%, rgba(255, 255, 255, 0) 24%),
+    radial-gradient(circle at 50% 50%, var(--b1), var(--b2) 78%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 24px var(--glow);
+}
+.nl-bauble.gold  { --b1: #F3D58A; --b2: #8E6A1E; --glow: rgba(243, 213, 138, 0.35); }
+.nl-bauble.red   { --b1: #C8384A; --b2: #5E0F1A; --glow: rgba(200, 56, 74, 0.3); }
+.nl-bauble.green { --b1: #3F7A5C; --b2: #12301F; --glow: rgba(63, 122, 92, 0.3); }
+@keyframes nlSwing { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+.nl-layer .nl-bauble { top: 76px; margin-left: calc(var(--size, 40px) / -2); }
+.nl-bauble.hb1 { --len: 78px;  --size: 44px; }
+.nl-bauble.hb2 { --len: 140px; --size: 36px; }
+.nl-bauble.hb3 { --len: 24px;  --size: 28px; }
+.nl-bauble.hb4 { --len: 50px;  --size: 26px; }
+
+/* ─── PAYSAGE ENNEIGÉ (bas du hero + transition vers le pied de page) ─── */
+.nl-skyline { position: absolute; left: 0; right: 0; bottom: -1px; height: max(150px, 11.67vw); color: #0B1511; }
+/* brume claire derrière les silhouettes, pour les détacher de la nuit */
+.nl-skyline::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 100%;
+  background: linear-gradient(to top, rgba(170, 195, 215, 0.24), rgba(170, 195, 215, 0) 85%); }
+.nl-skyline svg { position: relative; display: block; width: 100%; height: 100%; }
+.nl-skyline .nl-tree { stroke: rgba(225, 236, 244, 0.38); stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.nl-skyline.to-footer::before { display: none; }
+.nl-skyline.to-footer .nl-tree { stroke: none; }
+.nl-skyline .nl-snow { fill: var(--off-white); }
+.nl-skyline .nl-cap-snow { fill: #F4F7FA; }
+.nl-skyline .nl-roof-snow { fill: none; stroke: #F4F7FA; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.nl-skyline .nl-lit { fill: #F7C76A; filter: drop-shadow(0 0 4px rgba(247, 199, 106, 0.95)); animation: nlCandle 3.4s ease-in-out infinite; }
+.nl-skyline.to-footer { height: max(110px, 11.67vw); color: var(--charcoal); }
+/* la section Contact garde assez de place sous la carte pour le paysage */
+.noel #contact { padding-bottom: calc(max(110px, 11.67vw) + 16px); }
+/* le trait « défiler » traverserait le paysage */
+.noel .scroll-hint { display: none; }
+/* les ancres du menu ne cachent plus le haut des sections (houx, boules) sous la navigation */
+html.noel { scroll-padding-top: 72px; }
+.nl-skyline.to-footer .nl-snow { fill: var(--charcoal); }
+@keyframes nlCandle {
+  0%, 100% { opacity: 1; }
+  25%      { opacity: 0.8; }
+  50%      { opacity: 0.95; }
+  70%      { opacity: 0.74; }
+}
+
+/* ─── DÉCOR DES SECTIONS (sous le contenu) ─── */
+.noel .section > .container { position: relative; z-index: 1; }
+.nl-deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; --fall: 1500px; }
+.nl-deco .nl-bauble { --len: 70px; --size: 30px; }
+
+/* Brins de houx dans les coins des sections claires */
+.noel #notre-histoire,
+.noel #savoir-faire,
+.noel #prix-remporte,
+.noel #galerie,
+.noel #contact { position: relative; }
+.noel #notre-histoire::before,
+.noel #prix-remporte::before,
+.noel #contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 190px;
+  height: 190px;
+  background: url('../images/noel/houx.svg') no-repeat 0 0 / contain;
+  transform: scaleX(-1);
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+/* Flocon devant les titres de section */
+.noel .section-label::before {
+  content: '';
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: 0.55em;
+  vertical-align: -0.25em;
+  background: currentColor;
+  -webkit-mask: url('../images/noel/flocon.svg') center / contain no-repeat;
+          mask: url('../images/noel/flocon.svg') center / contain no-repeat;
+}
+
+/* Séparateur doré avec une étoile */
+.noel .gold-divider {
+  position: relative;
+  width: 110px;
+  background: linear-gradient(90deg, var(--gold) 0 38%, transparent 38% 62%, var(--gold) 62% 100%);
+}
+.noel .gold-divider::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  background: var(--gold);
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+}
+
+.nl-footer {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--gold-light);
+  text-shadow: 0 0 14px rgba(226, 194, 122, 0.4);
+  margin-bottom: 1.5rem;
+}
+.nl-flake-ico {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin: 0 0.35em;
+  vertical-align: -0.05em;
+  background: currentColor;
+  -webkit-mask: url('../images/noel/flocon.svg') center / contain no-repeat;
+          mask: url('../images/noel/flocon.svg') center / contain no-repeat;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .nl-skyline { height: max(110px, 11.67vw); }
+  .nl-skyline.to-footer { height: max(96px, 11.67vw); }
+  .noel #contact { padding-bottom: calc(max(96px, 11.67vw) + 14px); }
+}
+@media (max-width: 680px) {
+  html.noel { scroll-padding-top: 60px; }
+  .nl-garland { top: 60px; height: 44px; }
+  .nl-bulb.hide-mobile,
+  .nl-flake.hide-mobile,
+  .nl-star.hide-mobile,
+  .nl-sparkle.hide-mobile,
+  .nl-bauble.hide-mobile { display: none; }
+  .nl-layer .nl-bauble { top: 63px; }
+  .nl-layer .nl-bauble.hb1,
+  .nl-layer .nl-bauble.hb2 { --len: 16px; --size: 24px; }
+  .nl-deco .nl-bauble { --len: 16px; --size: 22px; }
+  .nl-skyline { height: max(66px, 11.67vw); }
+  .nl-skyline.to-footer { height: max(48px, 11.67vw); }
+  .noel #contact { padding-bottom: calc(max(48px, 11.67vw) + 12px); }
+  .noel #notre-histoire::before,
+  .noel #prix-remporte::before,
+  .noel #contact::before { width: 104px; height: 104px; }
+  .nl-ribbon { margin-bottom: 0.8rem; }
+}
+
+/* Mouvements réduits : décor figé */
+@media (prefers-reduced-motion: reduce) {
+  .nl-flake { display: none; }
+  .nl-ribbon .txt, .nl-bulb, .nl-star, .nl-sparkle, .nl-bauble, .nl-skyline .nl-lit { animation: none; }
+}

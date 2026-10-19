@@ -98,22 +98,33 @@ h1,h2,h3,h4{font-family:var(--font-serif);font-weight:400;line-height:1.2}
   <link rel="preload" href="css/style.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="css/style.css?v=3"></noscript>
 
-  <!-- Thème Halloween : s'éteint tout seul le 3 novembre 2026 à 0h.
-       ?halloween=1 pour le forcer (aperçu), ?halloween=0 pour voir le site normal. -->
+  <!-- Thèmes saisonniers : chacun s'allume et s'éteint tout seul selon la date.
+       Halloween : jusqu'au 2 novembre 2026 inclus. Noël : du 1er décembre 2026 au 2 janvier 2027 inclus.
+       ?halloween=1 / ?noel=1 pour forcer un thème (aperçu), =0 pour le couper. -->
   <script>
     (function () {
-      var FIN = new Date(2026, 10, 3);
-      var p = new URLSearchParams(location.search).get('halloween');
-      if (p === '0' || (p !== '1' && new Date() >= FIN)) return;
-      document.documentElement.classList.add('halloween');
-      ['https://fonts.googleapis.com/css2?family=Creepster&display=swap', 'css/halloween.css?v=2'].forEach(function (href) {
+      // nom, début (inclus), fin (exclue), version des fichiers, police Google en plus
+      var THEMES = [
+        ['halloween', null, new Date(2026, 10, 3), 2, 'family=Creepster'],
+        ['noel', new Date(2026, 11, 1), new Date(2027, 0, 3), 2, null]
+      ];
+      var q = new URLSearchParams(location.search), now = new Date(), theme = null;
+      THEMES.forEach(function (t) { if (!theme && q.get(t[0]) === '1') theme = t; });
+      THEMES.forEach(function (t) {
+        if (!theme && q.get(t[0]) !== '0' && (!t[1] || now >= t[1]) && now < t[2]) theme = t;
+      });
+      if (!theme) return;
+      document.documentElement.classList.add(theme[0]);
+      var hrefs = ['css/' + theme[0] + '.css?v=' + theme[3]];
+      if (theme[4]) hrefs.unshift('https://fonts.googleapis.com/css2?' + theme[4] + '&display=swap');
+      hrefs.forEach(function (href) {
         var l = document.createElement('link');
         l.rel = 'stylesheet';
         l.href = href;
         document.head.appendChild(l);
       });
       var s = document.createElement('script');
-      s.src = 'js/halloween.js?v=2';
+      s.src = 'js/' + theme[0] + '.js?v=' + theme[3];
       document.head.appendChild(s);
     })();
   </script>
